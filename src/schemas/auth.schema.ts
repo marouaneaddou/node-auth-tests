@@ -51,4 +51,17 @@ export const registerSchema = z.object({
             });
         };
     });
-    export type Register    =  z.infer<typeof registerSchema>
+
+export const loginSchema = z.object({
+    email : z.string()
+        .email()
+        .min(5)
+        .max(254),
+    password    :   z.string()
+        .min(8)
+        .max(32),
+}).strict();
+
+
+export type Register    =   z.infer<typeof registerSchema>
+export type Login       =   z.infer<typeof loginSchema>
