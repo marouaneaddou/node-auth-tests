@@ -11,8 +11,8 @@ import { StatusCodes }  from 'http-status-codes';
     return ( req : Request, res : Response, next : NextFunction) => {
         try {
             
-            console.error( 'test', req.body );
-            schema.parse( req.body );
+            // console.error( 'test', req.body );
+            // schema.parse( req.body );
             next();
         }
         catch ( error ) {
@@ -35,8 +35,8 @@ import { StatusCodes }  from 'http-status-codes';
 export function validatorParam( schema : ZodSchema ) {
     return ( req : Request, res : Response, next : NextFunction) => {
         try {
-            console.error( req.params );
-            schema.parse( req.params );
+            // console.error( req.params );
+            // schema.parse( req.params );
             next();
         }
         catch ( error ) {
@@ -58,8 +58,8 @@ export function validatorParam( schema : ZodSchema ) {
 export function validatorQuery( schema : ZodSchema ) {
     return ( req : Request, res : Response, next : NextFunction) => {
         try {
-            console.error( req.query );
-            schema.parse( req.query );
+            // console.error( req.query );
+            // schema.parse( req.query );
             next();
         }
         catch ( error ) {
