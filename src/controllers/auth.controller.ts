@@ -57,6 +57,8 @@ export const login = async ( req : Request<{}, {}, Login>, res : Response) => {
     });
     // return user data to client
     res.status( StatusCodes.OK ).json({
+        status  :   'sucess',
+        message :   'User logged in successfully',
         id      :   user.id,
         name    :   user.name,
     });

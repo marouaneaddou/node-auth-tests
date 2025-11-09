@@ -9,14 +9,14 @@ afterAll(async () => {
 
 describe('/POST Regiter endpoint', () => {
     it( 'Should return 400 missing required fields', async () => {
-        const reponse = await request(app)
+        const response = await request(app)
             .post('/api/v1/auth/register')
             .send({
                 password        :   'HelloTest1@',
                 confirmPassword :   'HelloTest1@',
                 name            :   'Test'
             })
-            expect(reponse.status).toBe(400);
+            expect(response.status).toBe(400);
     });
 
     it( 'Should return 201  create new user successfully', async () => {
@@ -56,5 +56,55 @@ describe('/POST Regiter endpoint', () => {
             status : 'fail',
             message : 'User already exist',
         });
+    });
+});
+
+describe('/POST Login endpoint', () => {
+    it( 'Should retunr 401 Invalid email or password ( Email incorrect )', async () => {
+        const response = await request( app )
+            .post('/api/v1/auth/login')
+            .send({
+                password : "HelloTest1@",
+                email    :  'test@gmail1.com'
+            })
+        expect( response.status ).toBe( 401 );
+        expect( response.body.message ).toEqual('Invalid email or password');
+    });
+
+    it( 'Should retunr 401 Invalid email or password ( Password incorrect )', async ()=> {
+        const response = await request( app )
+            .post( '/api/v1/auth/login' )
+            .send( {
+                password : "HelloTest1",
+                email    :  'test@gmail.com'
+            } );
+        expect( response.status ).toBe( 401 );
+        expect( response.body.message ).toEqual('Invalid email or password');
+    });
+
+    it( 'Should retunr 400 missing required fields ( Missing required fields ) ', async ()=> {
+        const response = await request( app )
+            .post('/api/v1/auth/login')
+            .send({
+                password : "HelloTest1@",
+                email1    :  'test@gmail1.com'
+            })
+        expect( response.status ).toBe( 400 );
+        expect( response.body ).toHaveProperty('message');
+        expect( response.body.message ).toEqual('Invalid data');
+    });
+
+    it( 'Should retun 200 user loged in successfully ', async ()=> {
+        const response = await request( app )
+            .post('/api/v1/auth/login')
+            .send({
+                password : "HelloTest1@",
+                email    :  'test@gmail.com'
+            })
+        expect( response.status ).toBe( 200 );
+        expect( response.body ).toHaveProperty( 'id' );
+        expect( response.body.message ).toEqual( 'User logged in successfully' );
+        expect( response.headers ).toHaveProperty( 'set-cookie' );
+        expect( response.headers['set-cookie'][0]).toContain('token=');
     });
 });

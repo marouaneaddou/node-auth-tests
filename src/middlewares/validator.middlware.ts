@@ -18,9 +18,9 @@ import { StatusCodes }  from 'http-status-codes';
         catch ( error ) {
             if (error instanceof ZodError) {
                 res.status(StatusCodes.BAD_REQUEST).json({
-                    success : false,
-                    errors  : error.flatten(),
-                    error   : 'Invalid data',
+                    success     :   false,
+                    errors      :   error.flatten(),
+                    message     :   'Invalid data',
                 });
 
             }
@@ -42,9 +42,9 @@ export function validatorParam( schema : ZodSchema ) {
         catch ( error ) {
             if (error instanceof ZodError) {
                 res.status(StatusCodes.BAD_REQUEST).json({
-                    success : false,
-                    errors  : error.flatten(),
-                    error   : 'Invalid data',
+                    success     :   false,
+                    errors      :   error.flatten(),
+                    message     :   'Invalid data',
                 });
 
             }
@@ -65,9 +65,9 @@ export function validatorQuery( schema : ZodSchema ) {
         catch ( error ) {
             if (error instanceof ZodError) {
                 res.status(StatusCodes.BAD_REQUEST).json({
-                    success : false,
-                    errors  : error.flatten(),
-                    error   : 'Invalid data',
+                    success     :   false,
+                    errors      :   error.flatten(),
+                    message     :   'Invalid data',
                 });
 
             }
