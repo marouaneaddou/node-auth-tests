@@ -31,7 +31,7 @@ const passwordSchemas = z.string()
         }
     });
 
-export const registerSchema = z.object({
+export const registerSchemas = z.object({
     name : z.string()
         .min(1, 'Name cannot be empty')
         .max(100, 'Name must be less than 100 characters'),
@@ -52,7 +52,7 @@ export const registerSchema = z.object({
         };
     });
 
-export const loginSchema = z.object({
+export const loginSchemas = z.object({
     email : z.string()
         .email()
         .min(5)
@@ -63,5 +63,5 @@ export const loginSchema = z.object({
 }).strict();
 
 
-export type Register    =   z.infer<typeof registerSchema>
-export type Login       =   z.infer<typeof loginSchema>
+export type Register    =   z.infer<typeof registerSchemas>
+export type Login       =   z.infer<typeof loginSchemas>
