@@ -8,7 +8,7 @@
   "scripts": {
     "migrate:test": "npx dotenv -e .env.test -- npx prisma migrate dev",
     "migrate:dev": "npx dotenv -e .env -- npx prisma migrate dev",
-    "dev": "NODE_ENV=dev nodemon src/index.ts",
+    "dev": "npx dotenv -e .env -- npx prisma migrate dev && NODE_ENV=dev nodemon src/index.ts",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
