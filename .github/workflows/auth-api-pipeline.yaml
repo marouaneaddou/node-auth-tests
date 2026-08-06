@@ -1,6 +1,8 @@
 name: AUTH API CI/CD
 
 on:
+  workflow_dispatch:
+  
   push:
     branches: 
       - main
@@ -15,7 +17,7 @@ jobs:
       - name: Checkout source code 
         uses: actions/checkout@v4
       
-      
+
       - name: Run Gitleaks to find leaked secrets
         uses: gitleaks/gitleaks-action@v3  
       
