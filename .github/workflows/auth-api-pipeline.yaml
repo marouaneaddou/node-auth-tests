@@ -15,6 +15,7 @@ jobs:
       - name: Checkout source code 
         uses: actions/checkout@v4
       
+      
       - name: Run Gitleaks to find leaked secrets
         uses: gitleaks/gitleaks-action@v3  
       
