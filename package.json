@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "migrate:test": "npx dotenv -e .env.test -- npx prisma migrate dev",
+    "migrate:ci": "prisma migrate deploy",
     "migrate:dev": "npx dotenv -e .env -- npx prisma migrate dev",
     "dev": "npx dotenv -e .env -- npx prisma migrate dev && NODE_ENV=dev nodemon src/index.ts",
     "test": "NODE_ENV=test jest"
