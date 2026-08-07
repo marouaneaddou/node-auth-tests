@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@v4
+        uses: snyk/actions/node@v1
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
