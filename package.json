@@ -10,7 +10,8 @@
     "migrate:ci": "prisma migrate deploy",
     "migrate:dev": "npx dotenv -e .env -- npx prisma migrate dev",
     "dev": "npx dotenv -e .env -- npx prisma migrate dev && NODE_ENV=dev nodemon src/index.ts",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest",
+    "test:covrage": "NODE_ENV=test jest --coverage"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
