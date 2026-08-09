@@ -5,24 +5,32 @@ import { Login,
     Register 
 }                               from '../schemas/auth.schema';
 import { addNewUser, 
+    countUsers, 
     findUserByEmail }           from '../services/auth.service';
 import bcrypt                   from 'bcryptjs';
 import { AppError }             from '../utils/AppError';
 import jwt                      from 'jsonwebtoken';
 import { config }               from '../config';
+import { Role }                 from '@prisma/client';
 
 export const register = async ( req : Request<{}, {}, Register>, res : Response) => {
     // body 
     const body = req.body;
-
-    // Check email exist in db 
-    const user = await findUserByEmail( body.email );
-    // if exist thrw error 
-    if ( user ) {
-        throw new AppError( 'User already exist', 409 );
-    };
-    // not exist create new user
-    await addNewUser( body );
+    // count
+    const count = await countUsers();
+    if ( count == 0 ) {
+        await addNewUser( body , true, Role.ADMIN );
+    }
+    else {
+        // Check email exist in db 
+        const user = await findUserByEmail( body.email );
+        // if exist thrw error 
+        if ( user ) {
+            throw new AppError( 'User already exist', 409 );
+        };
+        // not exist create new user
+        await addNewUser( body, false );
+    }
     // return success creation to client
     res.status( StatusCodes.CREATED ).json({
         status : 'success',
@@ -61,5 +69,6 @@ export const login = async ( req : Request<{}, {}, Login>, res : Response) => {
         message :   'User logged in successfully',
         id      :   user.id,
         name    :   user.name,
+        role    :   user.role
     });
 }
