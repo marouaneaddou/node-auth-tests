@@ -69,8 +69,8 @@ This project uses **Swagger** (OpenAPI) to document all available endpoints, req
 
 Once the application is running, you can explore and test the API directly from your browser:
 
-👉 **Swagger UI:** `http://localhost:<PORT>/api-docs`  
-*(Check your terminal output for the exact port when the server starts).*
+👉 **Swagger UI:** `http://localhost:3000/api/docs`  
+*(If you change the PORT in your `.env`, make sure to update the port in this URL).*
 
 ---
 
