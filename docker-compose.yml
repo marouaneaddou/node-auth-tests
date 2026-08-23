@@ -3,11 +3,13 @@ services:
     container_name: auth_dev 
     build:
       context: ./
+      args:
+        PORT: ${PORT:-3000}
       dockerfile: dockerfile
     env_file:
       - .env
     ports: 
-      - "${PORT}:${PORT}"
+      - "${PORT:-3000}:${PORT:-3000}"
     depends_on:
       - db_auth_dev
     restart: always
