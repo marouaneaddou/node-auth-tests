@@ -1,4 +1,4 @@
-# Node Auth Tests 🚀
+# Node Auth Tests
 
 A backend repository designed for experimenting with, implementing, and testing JSON Web Token (JWT) authentication mechanisms using Express, TypeScript, Prisma ORM, and robust input validation.
 
@@ -18,7 +18,7 @@ A backend repository designed for experimenting with, implementing, and testing 
 
 ---
 
-## ✨ Features
+## Features
 
 * **User Authentication:** Registration, Login, and secure Password Hashing.
 * **Protected Routes:** JWT-based Authentication middleware.
@@ -30,7 +30,7 @@ A backend repository designed for experimenting with, implementing, and testing 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 .
