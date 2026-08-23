@@ -169,15 +169,3 @@ docker-compose exec app_dev npm run test
 npm run test
 ```
 
----
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome! 
-Feel free to check the [issues page](https://github.com/marouaneaddou/node-auth-tests/issues).
-
----
-
-##  License
-
-This project is [MIT](LICENSE) licensed.
